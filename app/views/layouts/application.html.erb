@@ -1,41 +1,46 @@
+<!--アプリケーションに含まれる全てのテンプレート用レイアウト-->
+
 <!DOCTYPE html>
 <html>
   <head>
     <title>Bookers2</title>
-
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <!--ヘッダー-->
+    <%= user_signed_in? %>
     <header>
-     <% if user_signed_in? %>  <!--ログイン済み-->
-      <li>
-       <%= link_to "Home", root_path, method: :get %>
-      </li>
-      <li>
-        <%= link_to "Users", root_path, method: :get %>
-      </li>
-      <li>
-        <%= link_to "Books", root_path, method: :get %>
-      </li>
-      <li>
-        <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-      </li>
+      <% if user_signed_in? %>  <!--ログイン済み-->
+        <li>
+          <%= link_to "Home", root_path, method: :get %>
+        </li>
+        <li>
+          <%= link_to "Users", users_path, method: :get %>
+        </li>
+        <li>
+          <%= link_to "Books", books_path, method: :get %>
+        </li>
+        <li>
+          <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+        </li>
       <% else %>  <!--ログインしていない-->
-      <li>
-       <%= link_to "Home", root_path, method: :get %>
-      </li>
-      <li>
-        <%= link_to "About", root_path, method: :get %>
-      </li>
-      <li>
-        <%= link_to "Sign up", new_user_registration_path %>
-      </li>
-      <li>
-        <%= link_to "Log in", new_user_session_path %>
-      </li>
+        <li>
+         <%= link_to "Home", root_path, method: :get %>
+        </li>
+        <li>
+          <%= link_to "About", about_path, method: :get %>
+        </li>
+        <li>
+          <%= link_to "Sign up", new_user_registration_path %>
+        </li>
+        <li>
+          <%= link_to "Log in", new_user_session_path %>
+        </li>
       <%end%>
     </header>
     <%= yield %>
