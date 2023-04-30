@@ -1,7 +1,32 @@
+<!--Bookの詳細ページ-->
 <h1>Books#show</h1>
+
+<h1>User info</h1>
+<%= image_tag current_user.get_profile_image(100,100) %>
+<div>
+<p>name</p>
+<%= current_user.name %>
+<p>introduction</p>
+<%= current_user.introduction %>
+</div>
+
+<h1>New book</h1>
+<%= form_with model: @newBook, url:books_path, method: :post do |f| %>
+ <p>Title</p>
+ <%= f.text_field :title %>
+
+ <p>Opinion</p>
+ <%= f.text_area :body %>
+ 
+ <%= f.submit 'Create Book' %>
+<%end%>
 
 
 <h1>Book detail</h1>
+<%= image_tag @book.get_profile_image(100,100) %>
+<%= link_to @book.title, book_path(@book.id) %>
+<%= @book.body %>
 <% if @book.user == current_user %>
-<%= link_to "Destroy", books_path, method: :delete %>
+<%= link_to "Edit", edit_book_path(@book.id), method: :get %>
+<%= link_to "Destroy", book_path(@book.id), method: :delete %>
 <%end%>

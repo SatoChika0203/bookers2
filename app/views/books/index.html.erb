@@ -12,7 +12,7 @@
 </div>
 
 <h1>New book</h1>
-<%= form_with model: @book, url:'/books', method: :post do |f| %>
+<%= form_with model: @newBook, url:books_path, method: :post do |f| %>
  <p>Title</p>
  <%= f.text_field :title %>
 
@@ -27,7 +27,7 @@
 <div>
 <% @books.each do |books| %>
 <%= image_tag books.get_profile_image(100,100) %>
-<%= books.title %>
+<%= link_to books.title, book_path(books.id) %>
 <%= books.body %>
 <%end%>
 </div>
