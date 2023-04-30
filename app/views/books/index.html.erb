@@ -11,6 +11,8 @@
 <%= current_user.introduction %>
 </div>
 
+<%= link_to "User編集", edit_user_path(current_user.id), method: :get %>
+
 <h1>New book</h1>
 <%= form_with model: @newBook, url:books_path, method: :post do |f| %>
  <p>Title</p>

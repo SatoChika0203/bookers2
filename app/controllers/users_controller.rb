@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  before_action :is_matching_login_user, only: [:edit, :update]
+  # editとupdateを呼び出す前に実行されるアクション
+  
   def index
     @users=User.all
     # @user=User.find(params[:id])
@@ -52,6 +55,13 @@ class UsersController < ApplicationController
   
   def user_params
     params.require(:user).permit(:name, :introduction)
+  end
+  
+  def is_matching_login_user
+    @user=User.find(params[:id])
+    unless @user.id == current_user.id
+      redirect_to user_path(current_user.id)
+    end
   end
   
 end

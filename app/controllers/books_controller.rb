@@ -1,4 +1,7 @@
 class BooksController < ApplicationController
+before_action :is_matching_login_user, only: [:edit, :update]
+ # before_actionメソッド：コントローラーで各アクションを実行する前に実行したい処理を指定することができる
+
   def index
     @books=Book.all
     @newBook=Book.new
@@ -23,6 +26,7 @@ class BooksController < ApplicationController
 
   def show
     @book=Book.find(params[:id])
+    @user=@book.user
     @newBook=Book.new
     
   end
@@ -52,4 +56,16 @@ class BooksController < ApplicationController
   def book_params
     params.require(:book).permit(:title, :body)
   end
+  
+  def is_matching_login_user
+    @book=Book.find(params[:id])
+    @user=@book.user
+  　# Bookを、ログインしているUserと関連付ける
+    # アソシエーションで関連づけることで、Userのidが取得できる
+    unless @user.id == current_user.id
+      redirect_to user_path(current_user.id)
+    end
+  end
+  
+
 end
