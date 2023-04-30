@@ -2,27 +2,16 @@
 
 <h1>Books#index</h1>
 
-<h1>User info</h1>
-<%= image_tag current_user.get_profile_image(100,100) %>
-<div>
-<p>name</p>
-<%= current_user.name %>
-<p>introduction</p>
-<%= current_user.introduction %>
-</div>
+<% if @newBook.errors.any? %>
+  <%= @newBook.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @newBook.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 
-<%= link_to "User編集", edit_user_path(current_user.id), method: :get %>
-
-<h1>New book</h1>
-<%= form_with model: @newBook, url:books_path, method: :post do |f| %>
- <p>Title</p>
- <%= f.text_field :title %>
-
- <p>Opinion</p>
- <%= f.text_area :body %>
- 
- <%= f.submit 'Create Book' %>
-<%end%>
+<%= render 'index', newBook: @newBook %>
 
 <h1>Books</h1>
 <span>Title</span><span>Opinion</span>

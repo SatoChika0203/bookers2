@@ -5,18 +5,14 @@ before_action :is_matching_login_user, only: [:edit, :update]
   def index
     @books=Book.all
     @newBook=Book.new
-    
-    # @users=User.all
-    # @profile_images=@users.profile_image
-    
-    # @user=User.find(params[:id])
   end
   
   def create
-   book=Book.new(book_params)
-   book.user_id=current_user.id
-   if book.save
-    redirect_to book_path(book.id)
+   @newbook=Book.new(book_params)
+  @newbook.user_id=current_user.id
+   if @newbook.save
+    flash[:notice]="You have created book successfully."
+    redirect_to book_path(@newbook.id)
    else
     @books=Book.all
     @newBook=Book.new
@@ -37,6 +33,7 @@ before_action :is_matching_login_user, only: [:edit, :update]
   
   def update
     book = Book.find(params[:id])
+    book.user_id=current_user.id
     if book.update(book_params)
       flash[:notice]="You have updated book successfully."
       redirect_to book_path(book.id)
@@ -60,7 +57,7 @@ before_action :is_matching_login_user, only: [:edit, :update]
   def is_matching_login_user
     @book=Book.find(params[:id])
     @user=@book.user
-  　# Bookを、ログインしているUserと関連付ける
+    # Bookを、ログインしているUserと関連付ける
     # アソシエーションで関連づけることで、Userのidが取得できる
     unless @user.id == current_user.id
       redirect_to user_path(current_user.id)

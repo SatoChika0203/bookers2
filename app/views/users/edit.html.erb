@@ -1,6 +1,16 @@
 <!--ユーザー編集画面 -->
 
 <h1>Users#edit</h1>
+
+<% if @user.errors.any? %>
+  <%= @user.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <h1>User info</h1>
 <%= form_with model: @user, url:user_path(@user.id), method: :patch do |f| %>
   <label>Name</label>

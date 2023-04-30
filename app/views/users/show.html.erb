@@ -1,27 +1,9 @@
 <!--ユーザーの詳細画面-->
 <h1>Users#show</h1>
 
-<h1>User info</h1>
-<%= image_tag @user.get_profile_image(100,100) %>
-<div>
-<p>name</p>
-<%= @user.name %>
-<p>introduction</p>
-<%= @user.introduction %>
-</div>
+<%= flash[:notice] %>
 
- <%= link_to "User編集", edit_user_path(@user.id), method: :get %>
-
-<h1>New book</h1>
-<%= form_with model: @newBook, url:books_path, method: :post do |f| %>
- <p>Title</p>
- <%= f.text_field :title %>
-
- <p>Opinion</p>
- <%= f.text_area :body %>
- 
- <%= f.submit 'Create Book' %>
-<%end%>
+<%= render 'books/show', user: @user, newBook: @newBook %>
 
 <h1>Books</h1>
 <span>Title</span><span>Opinion</span>
