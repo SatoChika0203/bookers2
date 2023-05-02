@@ -1,11 +1,12 @@
+
 <h1>User info</h1>
 <%= image_tag current_user.get_profile_image(100,100) %>
-<div>
-<p>name</p>
-<%= current_user.name %>
-<p>introduction</p>
-<%= current_user.introduction %>
-</div>
+<table class="table table-striped">
+  <tbody>
+     <tr class="bg-transparent"><th>name</th><th><%= current_user.name %></th></tr>
+     <tr class="bg-transparent"><th>introduction</th><th><%= current_user.introduction %></th></tr>
+  </tbody>
+ </table>
 
 <p><%= link_to "User編集", edit_user_path(current_user.id), method: :get %></p>
 
@@ -16,6 +17,6 @@
 
  <p>Opinion</p>
  <%= f.text_area :body %>
- 
+
  <%= f.submit 'Create Book' %>
 <%end%>

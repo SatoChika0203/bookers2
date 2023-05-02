@@ -16,7 +16,7 @@ before_action :is_matching_login_user, only: [:edit, :update]
    else
     @books=Book.all
     @newBook=Book.new
-    render :index
+    render :index, status: :unprocessable_entity
    end
   end
 
@@ -38,7 +38,7 @@ before_action :is_matching_login_user, only: [:edit, :update]
       flash[:notice]="You have updated book successfully."
       redirect_to book_path(book.id)
     else
-       render :edit
+       render :edit, status: :unprocessable_entity
     end
   end
   

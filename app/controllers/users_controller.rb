@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     else
       @books=Book.all
       @newBook=Book.new
-      render :index
+      render :index, status: :unprocessable_entity
     end
   end
 
@@ -45,7 +45,7 @@ class UsersController < ApplicationController
     flash[:notice]="You have updated user successfully."
     redirect_to user_path(user.id)
     else
-     render :edit
+     render :edit, status: :unprocessable_entity
     end
   end
   

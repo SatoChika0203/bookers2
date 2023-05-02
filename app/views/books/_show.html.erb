@@ -1,11 +1,11 @@
 <h1>User info</h1>
 <%= image_tag user.get_profile_image(100,100) %>
-<div>
-<p>name</p>
-<%= user.name %>
-<p>introduction</p>
-<%= user.introduction %>
-</div>
+<table class="table table-striped">
+  <tbody>
+     <tr class="bg-transparent"><th>name</th><th><%= current_user.name %></th></tr>
+     <tr class="bg-transparent"><th>introduction</th><th><%= current_user.introduction %></th></tr>
+  </tbody>
+ </table>
 
 <%= link_to "User編集", edit_user_path(user.id), method: :get %>
 

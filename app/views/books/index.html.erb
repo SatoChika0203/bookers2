@@ -11,15 +11,35 @@
   </ul>
 <% end %>
 
-<%= render 'index', newBook: @newBook %>
+<div class="container">
+<div class="row"> 
 
-<h1>Books</h1>
-<span>Title</span><span>Opinion</span>
-<div>
-<% @books.each do |books| %>
-<%= image_tag books.get_profile_image(100,100) %>
-<%= link_to books.title, book_path(books.id) %>
-<%= books.body %>
-<%end%>
+ <div class="col-lg-4">
+  <%= render 'index', newBook: @newBook %>
+ </div>
+
+
+ <div class="col-lg-8"> 
+ <h1>Books</h1>
+ <table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= nil %></th>
+      <th>Title</th>
+      <th>Opinion</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <% @books.each do |books| %>
+    <tr>
+      <td><%= image_tag books.get_profile_image(100,100) %></td>
+      <td><%= link_to books.title, book_path(books.id) %></td>
+      <td><%= books.body %></td>
+    </tr>
+    <%end%>
+  </tbody>
+</table>
 </div>
-
+</div>
+</div>

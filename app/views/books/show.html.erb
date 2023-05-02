@@ -3,15 +3,28 @@
 
 <h1>Books#show</h1>
 
+<div class="container">
+<div class="row"> 
+
+ <div class="col-lg-4">
 <%= render 'show', user: @user, newBook: @newBook %>
+ </div>
 
-
+<div class="col-lg-8">
 <h1>Book detail</h1>
-<%= image_tag @book.get_profile_image(100,100) %>
-<%= link_to @user.name, user_path(@user.id) %>
-<%= link_to @book.title, book_path(@book.id) %>
-<%= @book.body %>
-<% if @book.user == current_user %>
-<%= link_to "Edit", edit_book_path(@book.id), method: :get %>
-<%= link_to "Destroy", book_path(@book.id), method: :delete %>
-<%end%>
+<table class="table table-striped">
+  <tbody>
+    <tr class="bg-transparent">
+      <th><%= image_tag @book.get_profile_image(100,100) %></br><%= link_to @user.name, user_path(@user.id) %></th>
+      <th><%= link_to @book.title, book_path(@book.id) %></th>
+      <th><%= @book.body %></th>
+    <% if @book.user == current_user %>
+     <th><%= link_to "Edit", edit_book_path(@book.id), method: :get %></th>
+     <th><%= link_to "Destroy", book_path(@book.id), method: :delete %></th>
+    <%end%>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
