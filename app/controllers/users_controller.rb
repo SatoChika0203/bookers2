@@ -40,7 +40,7 @@ class UsersController < ApplicationController
   
   def update
     user = User.find(params[:id])
-    book.user_id=current_user.id
+    user.id=current_user.id
     if user.update(user_params)
     flash[:notice]="You have updated user successfully."
     redirect_to user_path(user.id)
