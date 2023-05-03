@@ -15,7 +15,7 @@ before_action :is_matching_login_user, only: [:edit, :update]
     redirect_to book_path(@newBook.id)
    else
     @books=Book.all
-    render :index, status: :unprocessable_entity
+    render :index
    end
   end
 
@@ -59,7 +59,7 @@ before_action :is_matching_login_user, only: [:edit, :update]
     # Bookを、ログインしているUserと関連付ける
     # アソシエーションで関連づけることで、Userのidが取得できる
     unless @user.id == current_user.id
-      redirect_to user_path(current_user.id)
+      redirect_to books_path
     end
   end
 

@@ -4,8 +4,8 @@
 <%= image_tag user.get_profile_image(100,100) %>
 <table class="table table-striped">
   <tbody>
-     <tr class="bg-transparent"><th>name</th><th><%= current_user.name %></th></tr>
-     <tr class="bg-transparent"><th>introduction</th><th><%= current_user.introduction %></th></tr>
+     <tr class="bg-transparent"><th>name</th><th><%= user.name %></th></tr>
+     <tr class="bg-transparent"><th>introduction</th><th><%= user.introduction %></th></tr>
   </tbody>
  </table>
 
@@ -23,5 +23,5 @@
  <p>Opinion</p>
  <%= f.text_area :body %>
  </div>
- <%= f.submit 'Create Book' %>
+ <%= f.submit 'Create Book', class: "btn btn-success" %>
 <%end%>

@@ -4,16 +4,16 @@
 <div class="container">
 <div class="row"> 
 
- <div class="col-lg-4">
+ <div class="col-md-3">
 <%= render 'show', user: @user, newBook: @newBook %>
  </div>
 
-<div class="col-lg-8">
+<div class="col-md-8 offset-md-1">
 <h1>Book detail</h1>
 <table class="table table-striped">
   <tbody>
     <tr class="bg-transparent">
-      <th><%= image_tag @book.get_profile_image(100,100) %></br><%= link_to @user.name, user_path(@user.id) %></th>
+      <th><%= link_to (image_tag @book.user.get_profile_image(100,100)), user_path(@user.id) %></br><%= link_to @user.name, user_path(@user.id) %></th>
       <th><%= link_to @book.title, book_path(@book.id) %></th>
       <th><%= @book.body %></th>
     <% if @book.user == current_user %>

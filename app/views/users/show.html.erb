@@ -5,11 +5,11 @@
 <div class="container">
 <div class="row"> 
 
- <div class="col-lg-4">
+ <div class="col-md-3">
 <%= render 'books/show', user: @user, newBook: @newBook %>
  </div>
 
-<div class="col-lg-8">
+<div class="col-md-8 offset-md-1">
  <h1>Books</h1> 
 <table class="table table-striped">
   <thead>
@@ -23,7 +23,7 @@
   <tbody>
    <% @book.each do |books| %>
   <tr>
-    <td><%= image_tag books.get_profile_image(100,100) %></td>
+    <td><%= link_to (image_tag books.user.get_profile_image(100,100)), user_path(books.user.id) %></td>
     <td><%= link_to books.title, book_path(books.id) %></td>
     <td><%= books.body %></td>
   </tr>

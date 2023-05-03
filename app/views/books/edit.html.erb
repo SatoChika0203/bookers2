@@ -21,10 +21,10 @@
   <pl>Opinion</p>
   <%= f.text_area :body %>
   </div>
-  <%= f.submit "Update Book" %>
+  <%= f.submit "Update Book", class: "btn btn-secondary" %>
 <% end %>
 
 <%= link_to "Show", book_path(@book.id) %>
 <span>|</span>
-<%= link_to "Edit", books_path %>
+<%= link_to "Back", books_path %>
 </div>
