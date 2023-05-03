@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-    before_action :authenticate_user!, except: [:top]
+    before_action :authenticate_user!, except: [:top, :about]
     # 全てのアクションの前に、ユーザーがログインしているかどうか確認する（topアクション省く）
     
     # deviseのコントローラーは修正できないため、全てのコントローラーに対する処理を行えるApplicationControllerに記述する

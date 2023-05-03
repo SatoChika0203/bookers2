@@ -1,15 +1,10 @@
 <!--ユーザー編集画面 -->
 
-<h1>Users#edit</h1>
-
 <div class="container">
-      <h1>User info</h1>
-      <div class="form-body p-4">
+  <h1>User info</h1>
         <% if @user.errors.any? %>
-          <ul class="alert alert-danger" role="alert">
-            <h6 class="alert-heading">
-             <%= @user.errors.count %>件のエラーが発生しました
-            </h6>
+             <%= @user.errors.count %>error prohibited this obj from being saved:
+          <ul>
              <% @user.errors.full_messages.each do |message| %>
              <li><%= message %></li>
              <% end %>
@@ -31,5 +26,4 @@
         </div>
           <%= f.submit "Update User" %>
           <% end %>
-    </div>
   </div>

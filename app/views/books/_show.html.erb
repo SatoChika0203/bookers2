@@ -1,3 +1,5 @@
+<!--詳細画面の部分テンプレート-->
+
 <h1>User info</h1>
 <%= image_tag user.get_profile_image(100,100) %>
 <table class="table table-striped">
@@ -7,7 +9,9 @@
   </tbody>
  </table>
 
-<%= link_to "User編集", edit_user_path(user.id), method: :get %>
+<%= link_to edit_user_path(user.id), method: :get do %>
+<button type="button" class="btn btn-outline-secondary"><i class="fas fa-user-cog"></i></button>
+<%end%>
 
 <h1>New book</h1>
 <%= form_with model: newBook, url:books_path, method: :post do |f| %>

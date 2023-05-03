@@ -1,13 +1,15 @@
-<h1>Homes#top</h1>
+<!--トップ画面-->
 
+<div class="container">
 <%= flash[:notice] %>
 
-<h1>welcome to Bookers !!</h1>
-<p>In Bookers,</p>
+<h1>welcome to <i class="fas fa-book"></i>Bookers!!</h1>
+<p>In <i class="fas fa-book"></i>Bookers,</p>
 
 <p>you can share and exchange your opinions , inpressions , and emotions</p>
 
 <p>about various books!</p>
 
-<%= link_to "log in", new_user_session_path, method: :get %>
-<%= link_to "Sign up", new_user_registration_path, method: :get %>
+<p><%= link_to "log in", new_user_session_path, method: :get, class: "btn btn-primary " %></p>
+<p><%= link_to "Sign up", new_user_registration_path, method: :get, class: "btn btn-success" %></p>
+</div>

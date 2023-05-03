@@ -1,9 +1,7 @@
 <!--Booksの一覧ページ-->
 
-<h1>Books#index</h1>
-
 <% if @newBook.errors.any? %>
-  <%= @newBook.errors.count %>件のエラーが発生しました
+  <%= @newBook.errors.count %>errors prohibited this obj from being saved:
   <ul>
     <% @newBook.errors.full_messages.each do |message| %>
       <li><%= message %></li>
@@ -12,14 +10,14 @@
 <% end %>
 
 <div class="container">
-<div class="row"> 
+<div class="row">
 
  <div class="col-lg-4">
   <%= render 'index', newBook: @newBook %>
  </div>
 
 
- <div class="col-lg-8"> 
+ <div class="col-lg-8">
  <h1>Books</h1>
  <table class="table table-striped">
   <thead>
@@ -29,7 +27,7 @@
       <th>Opinion</th>
     </tr>
   </thead>
-  
+
   <tbody>
     <% @books.each do |books| %>
     <tr>
